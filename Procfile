@@ -1,1 +1,1 @@
-web: gunicorn -k application.server.main:app
+web: uvicorn application.server.main:app --workers 2 
