@@ -16,12 +16,10 @@ async def index():
 
 @app.post("/predict/image")
 async def predict_api(file: UploadFile = File(...)):
-    print('hey there');
     extension = file.filename.split(".")[-1].lower() in ("jpg", "jpeg", "png")
     if not extension:
         return "Image must be jpg or png format!"
     image = read_imagefile(await file.read())
-    print('here');
     prediction = predict(image)
 
     return prediction
